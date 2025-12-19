@@ -56,3 +56,78 @@
     <script src="script.js"></script>
 </body>
 </html>
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    line-height: 1.6;
+}
+
+header {
+    background: #333;
+    color: #fff;
+    padding: 1em;
+    text-align: center;
+}
+
+header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+header nav ul li {
+    margin-right: 20px;
+}
+
+header nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+#hero {
+    background-image: linear-gradient(to bottom, #333, #555);
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+
+// Add event listener to view work button
+document.querySelector('#hero button').addEventListener('click', () => {
+    document.querySelector('#projects').scrollIntoView({ behavior: 'smooth' });
+});
+
+// Add projects dynamically
+const projects = [
+    { title: 'Project 1', image: 'project1.jpg' },
+    { title: 'Project 2', image: 'project2.jpg' },
+];
+
+const projectGrid = document.querySelector('.project-grid');
+projects.forEach((project) => {
+    const projectHTML = `
+        <div class="project">
+            <img src="${project.image}" alt="${project.title}">
+            <h3>${project.title}</h3>
+        </div>
+    `;
+    projectGrid.innerHTML += projectHTML;
+});
